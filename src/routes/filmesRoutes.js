@@ -1,8 +1,8 @@
+import express from 'express';
+import filmesController from '../controllers/filmesController.js';
+import apiKeyMiddleware from '../middleware/authMiddleware.js';
 
-const express = require('express');
 const router = express.Router();
-const filmesController = require('../controllers/filmesController');
-const apiKeyMiddleware = require('../middleware/authMiddleware');
 
 router.use(apiKeyMiddleware);
 
@@ -14,4 +14,4 @@ router.post('/', filmesController.criarFilme);
 router.put('/:id', filmesController.atualizarFilme);
 router.delete('/:id', filmesController.deletarFilme);
 
-module.exports = router;
+export default router;

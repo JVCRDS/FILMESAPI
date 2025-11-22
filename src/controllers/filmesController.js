@@ -1,5 +1,4 @@
-
-const filmes = require('../data/database');
+import filmes from '../data/database.js';
 
 const filmesController = {
     listarFilmes: (req, res) => {
@@ -11,11 +10,12 @@ const filmesController = {
         const resultado = filmes.slice(inicio, fim);
         res.json(resultado);
     },
+    
     buscarPorId: (req, res) => {
         const filme = filmes.find(f => f.id === req.params.id);
         if (!filme) return res.status(404).json({ mensagem: "Filme não encontrado." });
         res.json(filme);
-  },
+    },
     
     buscarPorTitulo: (req, res) => {
         const titulo = decodeURIComponent(req.params.titulo);
@@ -25,7 +25,6 @@ const filmesController = {
         if (!filme) return res.status(404).json({ mensagem: "Filme não encontrado." });
         res.json(filme);
     },
-
 
     buscarPorGenero: (req, res) => {
         const genero = decodeURIComponent(req.params.genero);
@@ -37,7 +36,6 @@ const filmesController = {
         }
         res.json(filmesGenero);
     },
-
 
     criarFilme: (req, res) => {
         const { titulo, diretor, duracao, anoLancamento, genero, sinopse } = req.body;
@@ -61,7 +59,6 @@ const filmesController = {
         filmes.push(novoFilme);
         res.status(201).json(novoFilme);
     },
-
 
     atualizarFilme: (req, res) => {
         const filmeIndex = filmes.findIndex(f => f.id === req.params.id);
@@ -87,7 +84,6 @@ const filmesController = {
         res.json(filmes[filmeIndex]);
     },
 
-
     deletarFilme: (req, res) => {
         const filmeIndex = filmes.findIndex(f => f.id === req.params.id);
         if (filmeIndex === -1) {
@@ -99,4 +95,4 @@ const filmesController = {
     }
 };
 
-module.exports = filmesController;
+export default filmesController;
