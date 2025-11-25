@@ -2,8 +2,10 @@ import express from "express";
 import filmesRoutes from "./routes/filmesRoutes.js";
 import directorRoutes from "./routes/directorRoutes.js"; // NOVA IMPORT
 import generoRoutes from "./routes/generoRoutes.js"; // NOVA IMPORT
+import authRoutes from "./routes/authRoutes.js"; // NOVA IMPORT
 import FILMESAPI from "./data/database.js";
 import Filmes from "./models/filmes.js";
+import authMiddleware from "./middleware/authMiddleware.js"; // NOVA IMPORT
 import Director from "./models/Director.js"; // NOVA IMPORT
 import Genero from "./models/Genero.js"; // NOVA IMPORT
 import { Sequelize } from "sequelize";
@@ -32,7 +34,8 @@ try {
 }
 
 // Rotas
-app.use("/filmes", filmesRoutes);
+app.use("/auth", authRoutes); // Rota de autenticação (pública)
+app.use("/filmes", authMiddleware, filmesRoutes); // Protege todas as rotas de filmes
 app.use("/diretores", directorRoutes);
 app.use("/generos", generoRoutes);
 
@@ -41,6 +44,9 @@ app.get("/", (req, res) => {
     mensagem: "API de Catálogo de Filmes",
     versao: "1.0.0",
     endpoints: {
+      autenticacao: {
+        login: "POST /auth/login",
+      },
       filmes: {
         listarFilmes: "GET /filmes",
         buscarPorId: "GET /filmes/:id",

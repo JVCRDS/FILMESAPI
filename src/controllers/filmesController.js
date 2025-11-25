@@ -22,6 +22,7 @@ const filmesController = {
         dados: rows,
       });
     } catch (error) {
+      console.error("Erro em listarFilmes:", error); // Adicionado para depuração
       res.status(500).json({
         mensagem: "Erro ao listar filmes",
         erro: error.message,
@@ -37,6 +38,7 @@ const filmesController = {
       }
       res.json(filme);
     } catch (error) {
+      console.error("Erro em buscarPorId:", error); // Adicionado para depuração
       res.status(500).json({
         mensagem: "Erro ao buscar filme",
         erro: error.message,
@@ -60,6 +62,7 @@ const filmesController = {
       }
       res.json(filme);
     } catch (error) {
+      console.error("Erro em buscarPorTitulo:", error); // Adicionado para depuração
       res.status(500).json({
         mensagem: "Erro ao buscar filme",
         erro: error.message,
@@ -85,6 +88,7 @@ const filmesController = {
       }
       res.json(filmesGenero);
     } catch (error) {
+      console.error("Erro em buscarPorGenero:", error); // Adicionado para depuração
       res.status(500).json({
         mensagem: "Erro ao buscar filmes",
         erro: error.message,
@@ -124,6 +128,7 @@ const filmesController = {
         filme: novoFilme,
       });
     } catch (error) {
+      console.error("Erro em criarFilme:", error); // Adicionado para depuração
       res.status(500).json({
         mensagem: "Erro ao criar filme",
         erro: error.message,
@@ -162,6 +167,7 @@ const filmesController = {
         filme: filmeAtualizado,
       });
     } catch (error) {
+      console.error("Erro em atualizarFilme:", error); // Adicionado para depuração
       res.status(500).json({
         mensagem: "Erro ao atualizar filme",
         erro: error.message,
@@ -184,6 +190,7 @@ const filmesController = {
         filmeId: req.params.id,
       });
     } catch (error) {
+      console.error("Erro em deletarFilme:", error); // Adicionado para depuração
       res.status(500).json({
         mensagem: "Erro ao deletar filme",
         erro: error.message,
