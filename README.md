@@ -67,6 +67,52 @@ Esse projeto representa um passo importante para a formação como desenvolvedor
 A API pode ser acessada localmente após a instalação das dependências e execução do servidor.
 A documentação completa pode ser consultada via Swagger, permitindo testar todas as rotas de forma prática.
 
+## 🔐 Autenticação com JWT
+
+O projeto implementa autenticação baseada em tokens JWT (JSON Web Token). Para acessar os endpoints protegidos, você precisa:
+
+### 1️⃣ Fazer Login
+
+**POST** `/auth/login`
+
+```json
+{
+  "username": "admin",
+  "password": "admin123"
+}
+```
+
+**Resposta (200):**
+
+```json
+{
+  "mensagem": "Login realizado com sucesso",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "expiresIn": "24h"
+}
+```
+
+### 2️⃣ Usar o Token
+
+Envie o token no header `Authorization` com o prefixo `Bearer `:
+
+```
+Authorization: Bearer seu_token_aqui
+```
+
+### 3️⃣ Acessar Endpoints Protegidos
+
+Todos os endpoints de `/filmes` requerem autenticação:
+
+- `GET /filmes` - Listar filmes
+- `GET /filmes/:id` - Buscar filme por ID
+- `POST /filmes` - Criar filme
+- `PUT /filmes/:id` - Atualizar filme
+- `DELETE /filmes/:id` - Deletar filme
+
+⚠️ **Sem token:** `401 Unauthorized`
+⚠️ **Token inválido/expirado:** `401 Token inválido ou expirado`
+
 📚 Conclusão
 
 O desenvolvimento desta API proporcionou uma visão completa do processo de criação de um backend profissional, unindo banco de dados, regras de negócio, autenticação e documentação.
