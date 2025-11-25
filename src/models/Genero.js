@@ -16,9 +16,7 @@ const Genero = database.define(
     },
   },
   {
-    timestamps: true,
-    createdAt: "criadoEm",
-    updatedAt: "atualizadoEm",
+    timestamps: false,
   }
 );
 

@@ -28,6 +28,14 @@ const directorController = {
         return res.status(400).json({ mensagem: "O campo nome é obrigatório" });
       }
 
+      // TRATATIVA STRING - TO NUMBER
+      if (typeof dataNascimento === 'number') {
+        const ano = Math.floor(dataNascimento / 10000);
+        const mes = Math.floor((dataNascimento % 10000) / 100);
+        const dia = dataNascimento % 100;
+        dataNascimento = `${ano}-${mes.toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
+      }
+
       const novoDiretor = await Director.create({
         nome,
         nacionalidade,

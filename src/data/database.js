@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-const FILMESAPI = new Sequelize("FILMESAPI", "nikola", "admin", {
+const FILMESAPI = new Sequelize("FILMESAPI", "teste", "123", {
   host: "localhost",
   dialect: "postgres",
   port: 5432,

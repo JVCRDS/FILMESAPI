@@ -15,7 +15,7 @@ const Director = database.define(
       allowNull: false,
     },
     nacionalidade: DataTypes.STRING,
-    dataNascimento: DataTypes.DATE,
+    dataNascimento: DataTypes.DATEONLY,
   },
   {
     timestamps: true,

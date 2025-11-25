@@ -35,7 +35,7 @@ const router = express.Router();
  *           description: O nome do diretor.
  *         duracao:
  *           type: string
- *           description: A duração do filme (ex: "120 min").
+ *           description: "A duração do filme (ex: '120 min')."
  *         anoLancamento:
  *           type: integer
  *           description: O ano de lançamento do filme.
