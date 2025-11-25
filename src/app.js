@@ -3,7 +3,7 @@ import filmesRoutes from "./routes/filmesRoutes.js";
 import directorRoutes from "./routes/directorRoutes.js"; // NOVA IMPORT
 import generoRoutes from "./routes/generoRoutes.js"; // NOVA IMPORT
 import FILMESAPI from "./data/database.js";
-import Filmes from "./models/Filmes.js";
+import Filmes from "./models/filmes.js";
 import Director from "./models/Director.js"; // NOVA IMPORT
 import Genero from "./models/Genero.js"; // NOVA IMPORT
 import { Sequelize } from "sequelize";
