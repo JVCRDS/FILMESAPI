@@ -11,7 +11,7 @@ const filmesController = {
       const { count, rows } = await Filmes.findAndCountAll({
         limit: limite,
         offset: offset,
-        order: [["createdAt", "DESC"]],
+        order: [["criadoEm", "DESC"]],
       });
 
       res.json({

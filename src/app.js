@@ -39,7 +39,6 @@ try {
 
 // Rotas
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Rota da documentação
-
 app.use("/auth", authRoutes); // Rota de autenticação (pública)
 app.use("/filmes", authMiddleware, filmesRoutes); // Protege todas as rotas de filmes
 app.use("/diretores", authMiddleware, directorRoutes); // Protege todas as rotas de diretores
