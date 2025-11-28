@@ -51,6 +51,6 @@ describe("Testes de Integração para Endpoints de Gêneros", () => {
       .delete(`/generos/${generoCriadoId}`)
       .set("Authorization", `Bearer ${token}`);
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(204);
   });
 });

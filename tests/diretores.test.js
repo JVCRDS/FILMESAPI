@@ -1,6 +1,7 @@
 import request from "supertest";
 import app from "../src/app.js";
 
+
 const api = request(app);
 
 describe("Testes de Integração para Endpoints de Diretores", () => {
@@ -64,6 +65,6 @@ describe("Testes de Integração para Endpoints de Diretores", () => {
       .delete(`/diretores/${diretorCriadoId}`)
       .set("Authorization", `Bearer ${token}`);
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(204);
   });
 });
